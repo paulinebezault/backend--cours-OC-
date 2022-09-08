@@ -1,8 +1,12 @@
 const http = require('http');
+const app = require('./app'); //on importe l'appli
 
-const server = http.createServer((req, res) => { //req pour request, res pour response
+app.set('port', process.env.PORT || 3000); //on dit à l'application Express sur quel port elle va tourner
+
+/*const server = http.createServer((req, res) => { //req pour request, res pour response
     res.end('VOilà la réponse du serveur');
-}); // le serveur est prêt mais il doit avoir un port à écouter
+}); // le serveur est prêt mais il doit avoir un port à écouter | passé en commentaire car on l'enlève après. C'est un exemple de logique serveur de base*/
+const server = http.createServer(app);
 
 server.listen(process.env.PORT || 3000); //par défaut on utilise le port 3000, 
 //mais s'il est occupé ou si la plateforme de déploiement propose un port par défaut, 
